@@ -883,6 +883,77 @@ button:hover {
     background: #e11d48 !important;
 }
 
+/* ========================================================
+   POPUP PHÓNG TO ẢNH TRANG GALLERY
+   ======================================================== */
+.polaroid {
+    cursor: pointer; /* Biến con trỏ thành hình bàn tay để biết là bấm được */
+}
+
+.image-modal {
+    display: none; /* Ẩn mặc định */
+    position: fixed;
+    z-index: 9999;
+    padding-top: 40px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Nền đen mờ */
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 70vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: zoom 0.3s ease-out;
+}
+
+#caption {
+    margin-top: 20px;
+    width: 80%;
+    text-align: center;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    animation: zoom 0.3s ease-out;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #fb7185;
+}
+
+@keyframes zoom {
+    from {transform:scale(0.6); opacity: 0;}
+    to {transform:scale(1); opacity: 1;}
+}
+
+/* Sửa lại cho điện thoại */
+@media screen and (max-width: 768px) {
+    .modal-content { max-width: 95%; max-height: 60vh; }
+    #caption { font-size: 24px; }
+    .close-modal { top: 15px; right: 25px; }
+}
+
 /* Thêm delay cho nút thứ 4 để nó xuất hiện nối tiếp 3 nút kia */
         a.menu-card:nth-of-type(4) { animation-delay: 0.4s; }
 
@@ -1025,24 +1096,61 @@ button:hover {
     .env-letter-inside h2 { font-size: 24px; }
     .fold-back span { font-size: 28px !important; }
 
-    .timeline-container { padding: 10px 15px; margin-top: 20px; }
+    /* --------------------------------------
+       FIX TRANG TIMELINE: Ép 2 cột trên Mobile
+       -------------------------------------- */
+    .timeline-container { 
+        padding: 10px 0; /* Bỏ lề 2 bên để rộng hết cỡ */
+        margin-top: 10px; 
+    }
+    
+    /* Trả đường thẳng về lại chính giữa màn hình */
+    .timeline-container::after { 
+        left: 50% !important; 
+        margin-left: -2px !important; 
+    }
+
+    /* Ép 2 khối nằm 2 bên, mỗi khối chiếm đúng 50% chiều ngang */
     .milestone { 
-        width: 100%; 
-        padding-left: 55px !important; 
-        padding-right: 0 !important; 
-        text-align: left; 
+        width: 50% !important; 
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
-    .timeline-container::after { left: 25px !important; }
-    .milestone::after { 
-        left: 10px !important; 
-        width: 24px !important; 
-        height: 24px !important; 
-        font-size: 10px !important; 
+    
+    /* Căn lề khối bên trái */
+    .left { 
+        left: 0; 
+        text-align: right !important; 
+        padding-right: 18px !important; /* Rút ngắn khoảng cách tới đường giữa để ô bự ra */
+        padding-left: 5px !important; 
     }
-    .right { left: 0%; }
-    .content { padding: 15px 15px; }
-    .content h2 { font-size: 22px; }
-    .content p { font-size: 14px; }
+    /* Căn lề khối bên phải */
+    .right { 
+        left: 50% !important; 
+        text-align: left !important; 
+        padding-left: 18px !important; 
+        padding-right: 5px !important;
+    }
+
+    /* Chỉnh lại cái trái tim đập đập nằm ngay chính giữa đường thẳng */
+    .left::after { right: -12px !important; left: auto !important; }
+    .right::after { left: -12px !important; right: auto !important; }
+    .milestone::after {
+        width: 20px !important; 
+        height: 20px !important; 
+        font-size: 8px !important; 
+        top: 15px !important;
+    }
+
+    /* Thu nhỏ hộp nội dung để bớt "cao" và "mập" ngang ra */
+    .content { 
+        padding: 10px 8px !important; /* Ép viền sát lại để có diện tích cho chữ dàn ngang */
+        border-radius: 12px;
+    }
+    .float-icon { font-size: 18px !important; margin-bottom: 2px !important; }
+    .content h2 { font-size: 15px !important; margin-bottom: 2px !important; }
+    .content span { font-size: 11px !important; margin-bottom: 4px !important; }
+    .content p { font-size: 12px !important; line-height: 1.3 !important; }
 }
 
 /* Ép gọn hơn nữa cho mấy con iPhone đời cũ xíu xiu */
