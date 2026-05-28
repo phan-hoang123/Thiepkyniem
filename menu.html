@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 class="page-title" style="font-family: 'Quicksand', sans-serif; font-weight: 700; letter-spacing: 0;">OUR MEMORIES</h1>
+
+    <a href="days.html" class="menu-card">
+        <div class="menu-card-icon">🗓️</div>
+        <h3>Love Days</h3>
+        <p>Love story, day by day...</p>
+        <div style="font-size: 12px;">♡</div>
+    </a>
+
+    <a href="gallery.html" class="menu-card">
+        <div class="menu-card-icon">📸</div>
+        <h3>Love Memories</h3>
+        <p>You're in every moment i want to keep</p>
+        <div style="font-size: 12px;">♡</div>
+    </a>
+
+    <a href="letter.html" class="menu-card">
+        <div class="menu-card-icon">💌</div>
+        <h3>Love Letter</h3>
+        <p>Word from the heart</p>
+        <div style="font-size: 12px;">♡</div>
+    </a>
+
+    <a href="extra.html" class="menu-card">
+        <div class="menu-card-icon">🎬</div>
+        <h3>Our Journey</h3>
+        <p>Những điều tuyệt vời nhất của chúng ta</p>
+        <div style="font-size: 12px;">♡</div>
+    </a>
+
+    <script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        heart.style.zIndex = '-1';
+        heart.style.animation = `floatUp ${Math.random() * 3 + 4}s linear forwards`;
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+    
+    // Thêm CSS thẳng vào web cho trái tim bay
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes floatUp {
+            to { transform: translateY(-120vh) rotate(${Math.random() * 360}deg); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    setInterval(createHeart, 500); // Cứ 0.5s thả 1 trái tim
+</script>
+
+</body>
+</html>

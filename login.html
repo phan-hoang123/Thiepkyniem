@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa Tình Yêu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="justify-content: center;">
+
+    <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(251, 113, 133, 0.1); text-align: center; max-width: 400px; width: 100%;">
+        <div style="font-size: 40px; margin-bottom: 10px;">❤️</div>
+        <h2 style="margin-bottom: 5px;">31/05/2026</h2>
+        <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Pass là ngày chúng ta yêu nhau</p>
+        
+        <input type="password" id="passInput" placeholder="Nhập mã đặc biệt..." style="width: 100%; padding: 15px; font-size: 18px; border: 2px solid #fecdd3; border-radius: 12px; text-align: center; margin-bottom: 20px; outline: none; font-family: inherit;">
+        
+        <button onclick="kiemTra()" style="width: 100%; padding: 15px; font-size: 18px; background: #fb7185; color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(251, 113, 133, 0.3);">
+            ♡ Unlock my heart
+        </button>
+        
+        <p id="loi" style="color: #e11d48; display: none; margin-top: 15px; font-weight: bold;">Sai rồi nha!</p>
+    </div>
+
+    <script>
+        function kiemTra() {
+            var matKhau = document.getElementById("passInput").value;
+            // Đổi "0201" thành mật khẩu bạn muốn
+            if (matKhau === "3105") { 
+                window.parent.postMessage('play', '*');
+
+                window.location.href = "menu.html"; // Chuyển sang trang menu
+            } else {
+                document.getElementById("loi").style.display = "block";
+            }
+        }
+    </script>
+
+    <script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        heart.style.zIndex = '-1';
+        heart.style.animation = `floatUp ${Math.random() * 3 + 4}s linear forwards`;
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+    
+    // Thêm CSS thẳng vào web cho trái tim bay
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes floatUp {
+            to { transform: translateY(-120vh) rotate(${Math.random() * 360}deg); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    setInterval(createHeart, 500); // Cứ 0.5s thả 1 trái tim
+</script>
+</body>
+</html>

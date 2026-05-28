@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu.html" class="back-btn">❮ Quay lại</a>
+
+    <div id="envelope-scene">
+        <div class="hover-wrapper">
+            <div class="envelope">
+                <div class="env-back"></div>
+                <div class="env-letter-inside" id="letter-inside">
+                    <h2>Love Letter...</h2>
+                </div>
+                <div class="env-front-wrapper">
+                    <div class="env-flap-left"></div>
+                    <div class="env-flap-right"></div>
+                    <div class="env-flap-bottom"></div>
+                </div>
+                <div class="env-flap-top" id="flap-top">
+                    <div class="heart-seal">❤️</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="full-letter-scene">
+        <h1 class="page-title">Love letter</h1>
+
+        <div class="letter-wrapper" id="letter-wrapper">
+            
+            <div class="fold-top" id="fold-top">
+                <div class="fold-front"></div>
+                <div class="fold-back">
+                    <span style="font-family: 'Dancing Script', cursive; font-size: 32px; color: #fb7185;">For You... ❤️</span>
+                </div>
+            </div>
+            
+            <div class="fold-middle" id="fold-middle">
+                <div class="fold-front"></div>
+            </div>
+            
+            <div class="fold-bottom" id="fold-bottom">
+                <div class="fold-front"></div>
+                <div class="fold-back"></div>
+            </div>
+
+            <div class="paper-content" id="paper-content">
+                <p><strong>Gửi em - cô gái anh thương,</strong></p>
+                <br>
+                <p>Vậy là mình đã cùng nhau đi qua thêm một chặng đường yêu thương nữa rồi em nhỉ. Thời gian trôi qua thật nhanh, nhanh đến mức đôi lúc anh vẫn ngỡ như mới hôm qua thôi, anh còn hồi hộp khi nhắn cho em những tin nhắn đầu tiên.</p>
+                <br>
+                <p>Từ lúc em xuất hiện, cuộc sống của anh như có thêm nhiều màu sắc hơn, những ngày dài trở nên dịu lại, những mệt mỏi cũng vơi đi rất nhiều. Chúng ta đã có những khoảnh khắc rất vui, cũng có lúc buồn, giận hờn hay im lặng. Nhưng sau tất cả, điều khiến anh trân trọng nhất là em vẫn ở đó, vẫn chọn ở bên anh, cùng anh học cách yêu thương và thấu hiểu nhau nhiều hơn mỗi ngày.</p>
+                <br>
+                <p>Cảm ơn em vì đã kiên nhẫn với anh, vì đã yêu anh bằng cả sự dịu dàng và chân thành của em. Ngày kỉ niệm này, anh chỉ mong mình sẽ còn thật nhiều ngày như thế nữa. Dù tương lai có ra sao, chỉ cần được nắm tay em, anh tin mọi điều đều sẽ ổn.</p>
+                <br>
+                <p>Cảm ơn em vì đã đến, đã ở lại và trở thành điều đặc biệt nhất trong cuộc đời anh.</p>
+                
+                <div class="signature">Anh yêu em rất nhiều. ❤️<br>Quang Đạo</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createHearts() {
+            const colors = ['❤️', '💖', '💕', '💓'];
+            const heart = document.createElement('div');
+            heart.innerText = colors[Math.floor(Math.random() * colors.length)];
+            heart.classList.add('organic-heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = (Math.random() * 20 + 70) + 'vh';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+
+        const heartInterval = setInterval(createHearts, 400);
+
+        window.onload = () => {
+            // 1. Mở nắp phong bì
+            setTimeout(() => {
+                document.getElementById('flap-top').classList.add('open');
+            }, 1200);
+
+            // 2. Rút tờ giấy gập ra
+            setTimeout(() => {
+                document.getElementById('letter-inside').classList.add('slide-up');
+            }, 2300);
+
+            // 3. Camera zoom tới bức thư
+            setTimeout(() => {
+                clearInterval(heartInterval);
+                document.getElementById('envelope-scene').classList.add('fade-out');
+
+                const fullLetter = document.getElementById('full-letter-scene');
+                fullLetter.style.display = 'flex';
+                void fullLetter.offsetWidth;
+                fullLetter.classList.add('show'); // Cảnh hiện ra (Lúc này giấy vẫn đang gập)
+
+                // 4. BẮT ĐẦU MỞ NẾP GẤP GIẤY
+                setTimeout(() => {
+                    // Mở nếp gấp phía trên và phía dưới
+                    document.getElementById('fold-top').classList.add('open');
+                    document.getElementById('fold-bottom').classList.add('open');
+                    document.getElementById('fold-middle').classList.add('open');
+                    
+                    // Nội dung chữ và dòng kẻ mờ mờ hiện lên trên mặt giấy
+                    document.getElementById('paper-content').classList.add('show');
+                }, 1000); // Chờ 1 giây để khung cảnh bay tới nơi rồi mới bung nếp gấp
+
+            }, 4200);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Days</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu.html" class="back-btn">❮ Back</a>
+
+    <div class="page-title">LOVE DAYS</div>
+
+    <div class="big-heart-container" onclick="openPopup()" title="Bấm vào anh đi!">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+    </div>
+
+    <div class="counter-box">
+        <div class="days-number"><span id="day-count">0</span> DAYS</div>
+        <div class="timer" id="time-count">00 : 00 : 00</div>
+    </div>
+
+    <div class="wave-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#ffffff" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bottom-white-section">
+        <div class="profiles-container">
+            <div class="person">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop" alt="Phương Thùy">
+                <div class="person-name">Phương Thùy</div>
+            </div>
+
+            <div class="center-info">
+                <div class="center-heart">💖</div>
+                <div class="anniversary-date">31/05/2023</div>
+            </div>
+
+            <div class="person">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop" alt="Quang Đạo">
+                <div class="person-name">Quang Đạo</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="secret-popup" onclick="closePopupOutside(event)">
+        <div class="popup-box">
+            <div class="popup-decor">🎁</div>
+            <h3>Bí mật nhỏ...</h3>
+            <p>Mỗi khi thấy nhớ em, anh lại vào đây ngắm cái đồng hồ này chạy. Cảm ơn em đã ở bên anh suốt thời gian qua!</p>
+            <button class="close-btn" onclick="closePopup()">Yêu anh nhất!</button>
+        </div>
+    </div>
+
+    <script>
+        const startDate = new Date("2023-05-31T00:00:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            const formatHours = hours < 10 ? "0" + hours : hours;
+            const formatMinutes = minutes < 10 ? "0" + minutes : minutes;
+            const formatSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+            document.getElementById("day-count").innerText = days;
+            document.getElementById("time-count").innerText = `${formatHours} : ${formatMinutes} : ${formatSeconds}`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        const popup = document.getElementById("secret-popup");
+
+        function openPopup() {
+            popup.classList.add("show");
+        }
+
+        function closePopup() {
+            popup.classList.remove("show");
+        }
+
+        function closePopupOutside(event) {
+            if (event.target === popup) {
+                closePopup();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Ghi đè một số style để phù hợp với timeline */
+        body {
+            overflow-x: hidden;
+            padding-bottom: 100px;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        /* Đường thẳng ở giữa */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #fb7185;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(251, 113, 133, 0.3);
+        }
+
+        /* Các khối mốc thời gian */
+        .milestone {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Class để kích hoạt hiệu ứng khi cuộn tới */
+        .milestone.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Trái tim ở giữa đường thẳng */
+        .milestone::after {
+            content: '❤';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: -17px;
+            background-color: white;
+            border: 3px solid #fb7185;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fb7185;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Căn lề trái/phải */
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
+
+        .right::after { left: -17px; }
+
+        /* Nội dung bên trong mốc thời gian */
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(251, 113, 133, 0.15);
+            border: 2px solid #fecdd3;
+        }
+
+        .content h2 {
+            color: #fb7185;
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .content span {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        /* Hiệu ứng trôi nổi cho các icon */
+        .float-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @media screen and (max-width: 600px) {
+            .timeline-container::after { left: 31px; }
+            .milestone { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+            .milestone::after { left: 14px; }
+            .right { left: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="menu.html" class="back-btn">❮ Back</a>
+
+    <h1 class="page-title">Our Journey</h1>
+    <p style="text-align: center; color: #64748b; margin-top: -20px;">Từng bước chân chúng mình đi cùng nhau...</p>
+
+    <div class="timeline-container">
+        
+        <div class="milestone left">
+            <div class="content">
+                <div class="float-icon">👋</div>
+                <span>14 Tháng 02, 2024</span>
+                <h2>Lần đầu gặp gỡ</h2>
+                <p>Ngày hôm ấy trời nắng nhẹ, anh lần đầu nhìn thấy nụ cười của em. Trái tim anh biết rằng, cuộc đời mình từ nay đã khác.</p>
+            </div>
+        </div>
+
+        <div class="milestone right">
+            <div class="content">
+                <div class="float-icon">☕</div>
+                <span>01 Tháng 03, 2024</span>
+                <h2>Buổi hẹn đầu tiên</h2>
+                <p>Hai đứa ngồi quán cafe quen, nói đủ thứ chuyện trên đời. Cảm giác thân thuộc như đã quen nhau từ kiếp nào.</p>
+            </div>
+        </div>
+
+        <div class="milestone left">
+            <div class="content">
+                <div class="float-icon">💖</div>
+                <span>20 Tháng 04, 2024</span>
+                <h2>Lời yêu ngỏ ý</h2>
+                <p>Dưới ánh đèn đường lung linh, cái gật đầu của em đã biến anh thành người hạnh phúc nhất thế gian.</p>
+            </div>
+        </div>
+
+        <div class="milestone right">
+            <div class="content">
+                <div class="float-icon">✈️</div>
+                <span>15 Tháng 07, 2024</span>
+                <h2>Chuyến đi xa đầu tiên</h2>
+                <p>Đà Lạt mộng mơ, tay trong tay đi giữa rừng thông. Những kỉ niệm đẹp nhất bắt đầu từ đây.</p>
+            </div>
+        </div>
+
+        <div class="milestone left">
+            <div class="content">
+                <div class="float-icon">🌹</div>
+                <span>Hôm nay & Mãi về sau</span>
+                <h2>Vẫn luôn là em</h2>
+                <p>Dù có bao nhiêu khó khăn, chỉ cần nhìn thấy em, anh lại có thêm động lực để cố gắng. Yêu em!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Hiệu ứng xuất hiện khi cuộn chuột (Scroll Animation)
+        const milestones = document.querySelectorAll('.milestone');
+        
+        const checkScroll = () => {
+            milestones.forEach(m => {
+                const rect = m.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    m.classList.add('show');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll); // Kiểm tra ngay khi tải trang
+
+        // Mưa trái tim bay
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '110vh';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.zIndex = '-1';
+            heart.style.animation = `floatUp ${Math.random() * 3 + 5}s linear forwards`;
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes floatUp { to { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }`;
+        document.head.appendChild(style);
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
