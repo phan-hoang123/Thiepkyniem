@@ -994,15 +994,23 @@ button:hover {
 
     /* --- CÁC TRANG CÒN LẠI (Căn lề lại do body đã mất padding) --- */
     .gallery-grid { 
-        grid-template-columns: 1fr; 
-        gap: 20px; 
-        padding: 0 15px; /* Thêm lề riêng cho album */
+        grid-template-columns: repeat(2, 1fr); /* Ép về lại 2 cột ngang */
+        gap: 12px; /* Khoảng cách giữa 2 ảnh hẹp lại một tí */
+        padding: 0 10px; 
         width: 100%; 
     }
-    .polaroid { padding: 12px 12px 25px 12px; }
-    .polaroid:nth-child(odd) { transform: rotate(-2deg); }
-    .polaroid:nth-child(even) { transform: rotate(2deg); }
-    .polaroid p { font-size: 22px; }
+    .polaroid { 
+        padding: 8px 8px 15px 8px; /* Viền trắng thu nhỏ lại cho đỡ thô */
+    }
+    .polaroid:nth-child(odd) { transform: rotate(-1.5deg); }
+    .polaroid:nth-child(even) { transform: rotate(1.5deg); }
+    .polaroid p { 
+        font-family: 'Quicksand', sans-serif !important; /* Đổi sang chữ thường cho dễ đọc */
+        font-size: 13px !important; /* Chữ nhỏ lại cho vừa khung 2 cột */
+        font-weight: 600;
+        line-height: 1.4;
+        margin-top: 5px;
+    }
 
     .envelope { transform: scale(0.8); }
     #full-letter-scene { padding: 70px 10px 30px 10px; }
