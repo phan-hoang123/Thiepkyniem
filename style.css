@@ -881,68 +881,160 @@ button:hover {
         a.menu-card:nth-of-type(4) { animation-delay: 0.4s; }
 
 /* ========================================================
-   GIAO DIỆN ĐIỆN THOẠI (Màn hình nhỏ hơn 768px) 
+   🔥 GIAO DIỆN ĐIỆN THOẠI (Mobile Responsive Tối Ưu Lại) 🔥
    ======================================================== */
 @media screen and (max-width: 768px) {
-    /* Thu nhỏ tiêu đề */
-    .page-title { 
-        font-size: 24px; 
-        margin-top: 50px; 
-        letter-spacing: 3px;
-    }
-
-    /* --- Dành cho trang DAYS.HTML --- */
-    /* Thu nhỏ trái tim */
-    .big-heart-container { 
-        width: 240px; 
-        height: 240px; 
+    /* CHUNG */
+    body { 
+        /* Ép lề 2 bên bằng 0 để các mảng màu trắng có thể tràn full viền */
+        padding: 15px 0; 
     }
     
-    /* Thu nhỏ hộp đồng hồ */
+    .page-title { 
+        font-size: 32px; 
+        margin-top: 45px; 
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    }
+    
+    .back-btn { 
+        top: 15px; 
+        left: 15px; 
+        padding: 8px 14px; 
+        font-size: 13px; 
+        position: fixed; 
+    }
+
+    /* --------------------------------------
+       FIX ẢNH 1: LOVE DAYS (Trắng tràn full viền)
+       -------------------------------------- */
+    .big-heart-container { 
+        width: 220px; 
+        height: 220px; 
+        margin-top: 10px; 
+    }
     .counter-box { 
-        min-width: 240px; 
-        padding: 15px 20px; 
+        width: 90%; 
+        min-width: unset; 
+        padding: 12px 20px; 
         margin-top: -20px; 
     }
-    .days-number { font-size: 20px; }
-    .timer { font-size: 24px; letter-spacing: 2px; }
+    .days-number { font-size: 22px; margin-bottom: 4px; }
+    .timer { font-size: 22px; letter-spacing: 2px; }
 
-    /* Thu nhỏ cụm Avatar 2 người */
-    .profiles-container { padding: 0 10px; }
-    .person img { width: 65px; height: 65px; }
-    .person-name { font-size: 14px; }
-    .center-heart { font-size: 24px; }
-    .anniversary-date { font-size: 12px; }
-
-    /* Thu nhỏ hộp Popup */
-    .popup-box { padding: 25px 15px; width: 85%; }
-    .popup-box h3 { font-size: 26px; }
-    .popup-box p { font-size: 14px; }
-
-
-    /* --- Dành cho trang LETTER.HTML --- */
-    /* Thu nhỏ phong bì lúc bay bay */
-    .envelope { 
-        transform: scale(0.85); /* Thu nhỏ phong bì còn 85% */
+    /* Ép lượn sóng và nền trắng tràn ra 100% màn hình */
+    .wave-container { 
+        height: 50px; 
+        margin-top: 15px; 
+        width: 100vw; 
+        margin-left: 0; 
     }
     
-    /* Thu nhỏ tờ giấy 3D lúc lật ra */
-    #full-letter-scene {
-        padding: 60px 15px 30px 15px;
+    .bottom-white-section { 
+        width: 100vw; 
+        padding-left: 15px; 
+        padding-right: 15px; 
     }
+
+    .profiles-container { padding: 0; max-width: 100%; width: 100%; }
+    .person img { width: 65px; height: 65px; border-width: 2px; }
+    .person-name { font-size: 14px; }
+    .center-heart { font-size: 26px; }
+    .anniversary-date { font-size: 12px; }
+
+    .popup-box { padding: 25px 15px; width: 88%; }
+    .popup-box h3 { font-size: 28px; }
+    .popup-box p { font-size: 15px; }
+
+
+    /* --------------------------------------
+       FIX ẢNH 2: MENU (Lùn xuống, rộng ra 2 bên)
+       -------------------------------------- */
+    .menu-card { 
+        padding: 12px 15px; /* Giảm độ dày trên dưới */
+        border-radius: 16px; 
+        margin-bottom: 12px;
+        width: 92%; /* Kéo dãn chiều ngang ra 92% màn hình */
+        max-width: none; 
+    }
+    .menu-card-icon { font-size: 35px; margin-bottom: 5px; } /* Icon gọn lại */
+    .menu-card h3 { font-size: 18px; margin-bottom: 2px; }
+    .menu-card p { font-size: 13px; margin-bottom: 5px; }
+
+
+    /* --------------------------------------
+       FIX ẢNH 3: TRANG KHÓA (Gọn gàng, mỏng lại)
+       -------------------------------------- */
+    /* Dùng CSS đè bẹp các chỉ số bị fix cứng trong thẻ HTML cũ */
+    div[style*="max-width: 400px"] {
+        padding: 25px 20px !important; 
+        width: 92% !important; 
+        max-width: none !important;
+        border-radius: 16px !important;
+    }
+    div[style*="max-width: 400px"] h2 { font-size: 22px !important; margin-bottom: 2px !important; }
+    div[style*="max-width: 400px"] p { margin-bottom: 15px !important; }
+    
+    input[type="password"] { 
+        padding: 10px !important; 
+        font-size: 16px !important; 
+        margin-bottom: 15px !important; 
+    }
+    button { 
+        padding: 12px !important; 
+        font-size: 16px !important; 
+    }
+
+
+    /* --- CÁC TRANG CÒN LẠI (Căn lề lại do body đã mất padding) --- */
+    .gallery-grid { 
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+        padding: 0 15px; /* Thêm lề riêng cho album */
+        width: 100%; 
+    }
+    .polaroid { padding: 12px 12px 25px 12px; }
+    .polaroid:nth-child(odd) { transform: rotate(-2deg); }
+    .polaroid:nth-child(even) { transform: rotate(2deg); }
+    .polaroid p { font-size: 22px; }
+
+    .envelope { transform: scale(0.8); }
+    #full-letter-scene { padding: 70px 10px 30px 10px; }
+    .letter-wrapper { max-width: 100%; padding: 0 10px; }
     .paper-content, .letter-paper { 
         padding: 30px 20px 40px 20px; 
         font-size: 15px; 
-        line-height: 28px; /* Giảm khoảng cách dòng kẻ */
+        line-height: 28px; 
         background-image: repeating-linear-gradient(transparent, transparent 27px, #cbd5e1 27px, #cbd5e1 28px);
     }
     .signature { font-size: 24px; margin-top: 20px; }
+    .env-letter-inside h2 { font-size: 24px; }
+    .fold-back span { font-size: 28px !important; }
 
-    /* Nút back trên điện thoại cho gọn */
-    .back-btn { 
-        padding: 6px 14px; 
-        font-size: 13px; 
-        top: 15px; 
-        left: 15px; 
+    .timeline-container { padding: 10px 15px; margin-top: 20px; }
+    .milestone { 
+        width: 100%; 
+        padding-left: 55px !important; 
+        padding-right: 0 !important; 
+        text-align: left; 
     }
+    .timeline-container::after { left: 25px !important; }
+    .milestone::after { 
+        left: 10px !important; 
+        width: 24px !important; 
+        height: 24px !important; 
+        font-size: 10px !important; 
+    }
+    .right { left: 0%; }
+    .content { padding: 15px 15px; }
+    .content h2 { font-size: 22px; }
+    .content p { font-size: 14px; }
+}
+
+/* Ép gọn hơn nữa cho mấy con iPhone đời cũ xíu xiu */
+@media screen and (max-width: 380px) {
+    .envelope { transform: scale(0.65); }
+    .big-heart-container { width: 190px; height: 190px; }
+    .timer { font-size: 18px; }
+    .page-title { font-size: 28px; }
 }
